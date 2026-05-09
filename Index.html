@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Mom</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff5f5; /* Soft pinkish white */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            width: 90%;
+        }
+
+        /* The Heart Shape */
+        .heart {
+            background-color: #ff4d4d;
+            display: inline-block;
+            height: 300px;
+            margin: 0 10px;
+            position: relative;
+            top: 0;
+            transform: rotate(-45deg);
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            background-color: #ff4d4d;
+            border-radius: 50%;
+            height: 300px;
+            position: absolute;
+            width: 300px;
+        }
+
+        .heart:before {
+            top: -150px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 150px;
+            top: 0;
+        }
+
+        /* Text inside the heart */
+        #message-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg); /* Counter-rotate text */
+            z-index: 10;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 220px; /* Keep text contained in heart */
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.05) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+
+        .tap-hint {
+            margin-top: 50px;
+            color: #ff4d4d;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" onclick="displayRandomMessage()">
+        <div class="heart">
+            <div id="message-display">Loading love...</div>
+        </div>
+        <p class="tap-hint">Tap the heart for more love</p>
+    </div>
+
+    <script>
+        // --- ADD YOUR PHRASES HERE ---
+        const messages = [
+            "You are the heart of our home.",
+            "I'm so lucky to be your child.",
+            "Thank you for your endless patience.",
+            "You make the world a brighter place.",
+            "I love you more than words can say!",
+            "You're my superhero, Mom.",
+            "Your hugs are the best medicine.",
+            "Thinking of you and smiling.",
+            "You deserve the best day ever!"
+        ];
+
+        function displayRandomMessage() {
+            const display = document.getElementById('message-display');
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            display.innerText = messages[randomIndex];
+        }
+
+        // Run once on load
+        window.onload = displayRandomMessage;
+    </script>
+</body>
+</html>
+
+
+
+
+
